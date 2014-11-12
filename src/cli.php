@@ -8,5 +8,8 @@ include __DIR__.'/../vendor/autoload.php';
 // 3. Verdeel de info over de classes en shit
 // 4. Begin de game enzo
 
-$manager = new \AD9001\GameState\Manager();
-$manager->go($argv, $argv);
+$gameType = isset($argv[1]) ? $argv[1] : 'training';
+
+$api     = new \AD9001\Netcode\Api(include __DIR__.'/../apikey.php');
+$manager = new \AD9001\GameState\Manager($api);
+$manager->go($gameType);

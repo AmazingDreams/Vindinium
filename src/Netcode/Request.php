@@ -9,8 +9,7 @@ class Request {
 	 *
 	 * @param  $method   HTTP Method to use
 	 * @param  $url      URL to call
-	 * @param  $params   URL Parameters to use
-	 *
+	 * @param  $params   URL Parameters to use *
 	 * @return  Request  A new request
 	 */
 	public static function factory($method, $url, array $params = array())
