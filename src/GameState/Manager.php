@@ -10,6 +10,18 @@ class Manager {
 
 	private $_api;
 
+    private $_id;
+
+    private $_currentTurn;
+
+    private $_maxTurns;
+
+    private $_heroes;
+
+    private $_gameHasFinished;
+
+    private $_board;
+
 	public function __construct(API $api)
 	{
 		$this->_api = $api;
@@ -20,8 +32,24 @@ class Manager {
 		$response = $this->_api->start($gameType);
 		$content  = $response->getContent();
 
-		$game  = new Game($content->game);
-		$board = new Board($content->game->board);
+		$this->_board = new Board($content->game->board);
+
 	}
 
+    public function updateStats($game)
+    {
+
+        $this->_id = $game->id;
+        $this->_currentTurn = $game->turn;
+        $this->_maxTurns = $game->maxTurns;
+        $this->_heroes = $game->heroes;
+        $this->_board = $game->board;
+        $this->_gameHasFinished = $game->finished; 
+
+    }
+
+    public function getStats()
+    {
+
+    }
 }
