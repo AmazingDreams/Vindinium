@@ -11,7 +11,7 @@ namespace AD9001\Netcode;
 
 class Api {
 
-    private static $_baseUrl = "http:://vindinium.org/api/";
+    private $_baseUrl = "http:://vindinium.org/api/";
 
     private $_apiKey;
 
@@ -25,7 +25,7 @@ class Api {
         $mode = strtolower($mode);
         if ( ! in_array($mode, array("arena", "training")))
             throw new \Exception("Invalid mod $mode");
-        $request = Request::factory("POST", self::$_baseUrl.$mode);
+        $request = Request::factory("POST", $this->_baseUrl.$mode);
         $request -> setData(array(
             "key" => $this->_apiKey,
             "turns" => $turns,
