@@ -1,0 +1,15 @@
+{
+    "name": "ad9001/vindinium",
+    "authors": [
+        {
+            "name": "Dennis Ruhe",
+            "email": "dennis@amazingsystems.nl"
+        }
+    ],
+    "autoload" : {
+        "psr-4" : {
+            "AD9001\\" : "src/"
+        }
+    },
+    "require": {}
+}
