@@ -13,8 +13,9 @@ class Api {
 
     private $_baseUrl = "http:://vindinium.org/api/";
 
-
     private $_apiKey;
+
+    private $_token;
 
     public function __construct($apiKey)
     {
@@ -40,6 +41,9 @@ class Api {
 
         if ($response->getStatusCode() != 200)
             throw new \Exception("Got status code".$response->getStatusCode());
+
+        $this->_baseUrl = $response->getContent()->viewUrl;
+        $this->_token = $response->getContent()->token; 
 
         return $response;
     }
