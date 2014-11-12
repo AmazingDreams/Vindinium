@@ -6,11 +6,9 @@
  * Time: 13:36
  */
 
-class Hero {
+class Hero extends Tile {
 
     private $_id;
-
-    private $_currentPosition;
 
     private $_lastDirection;
 
@@ -30,8 +28,4 @@ class Hero {
         $this->_isOurs = $isOurs;
     }
 
-    public function setPosition($newPosition)
-    {
-        $this->_currentPosition = $newPosition;
-    }
-} 
+}

@@ -11,7 +11,7 @@ namespace AD9001\Netcode;
 
 class Api {
 
-    private $_baseUrl = "http:://vindinium.org/api/";
+    private $_baseUrl = "http://vindinium.org/api/";
 
     private $_apiKey;
 
@@ -43,7 +43,7 @@ class Api {
             throw new \Exception("Got status code".$response->getStatusCode());
 
         $this->_baseUrl = $response->getContent()->viewUrl;
-        $this->_token = $response->getContent()->token; 
+        $this->_token = $response->getContent()->token;
 
         return $response;
     }
