@@ -27,6 +27,11 @@ class Hero {
     public function __construct($id, $isOurs)
     {
         $this->_id = $id;
-        $this->_isOurs = $isOurs; 
+        $this->_isOurs = $isOurs;
+    }
+
+    public function setPosition($newPosition)
+    {
+        $this->_currentPosition = $newPosition;
     }
 } 
