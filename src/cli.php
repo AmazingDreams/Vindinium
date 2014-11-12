@@ -9,4 +9,4 @@ include __DIR__.'/../vendor/autoload.php';
 // 4. Begin de game enzo
 
 $manager = new \AD9001\GameState\Manager();
-$manager->go($argv);
+$manager->go($argv, $argv);
