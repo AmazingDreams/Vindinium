@@ -1,4 +1,8 @@
 <?php
+
+namespace AD9001\Game\Tiles;
+
+
 /**
  * Created by PhpStorm.
  * User: Athos
@@ -22,10 +26,9 @@ class Hero extends Tile {
 
     private $_isOurs;
 
-    public function __construct($id, $isOurs)
+    public function __construct($id)
     {
         $this->_id = $id;
-        $this->_isOurs = $isOurs;
     }
 
 }

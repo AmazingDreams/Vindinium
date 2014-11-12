@@ -8,16 +8,27 @@ class Tile {
 	{
 		$tile;
 
-		if($ch1 == '#' AND $ch2 == '#')
-			$tile = new Wood();
-		else if($ch1 == '@')
-			$tile = new Hero($ch2);
-		else if($ch1 == '$')
-			$tile = new GoldMine($ch2);
-		else if($ch1 == '['  AND $ch2 == ']')
-			$tile = new Tavern();
-		else
-			$tile = new Grass();
+		switch($ch1)
+		{
+			case ' ':
+				$tile = new Grass();
+				break;
+			case '#':
+				$tile = new Wood();
+				break;
+			case '@':
+				$tile = new Hero($ch2);
+				break;
+			case '$':
+				$tile = new GoldMine($ch2);
+				break;
+			case '[':
+				$tile = new Tavern();
+				break;
+			default:
+				$tile = new Grass();
+				break;
+		}
 
 		$tile->setPosition($row, $col);
 

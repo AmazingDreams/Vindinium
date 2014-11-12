@@ -1,5 +1,4 @@
 <?php
-
 namespace AD9001\Game;
 
 use \AD9001\Game\Tiles\Tile;
@@ -16,8 +15,6 @@ class Board {
 	{
 		$this->setSize($board->size);
 		$this->readTiles($board->tiles);
-
-		var_dump($this->_tiles);
 	}
 
 	public function getHeroes()
@@ -33,6 +30,21 @@ class Board {
 	public function getGoldMines()
 	{
 		return $this->_tilesMapped['goldmines'];
+	}
+
+	public function getTiles()
+	{
+		return $this->_tiles;
+	}
+
+	public function getWoods()
+	{
+		return $this->_tilesMapped['woods'];
+	}
+
+	public function getGrass()
+	{
+		return $this->_tilesMapped['grass'];
 	}
 
 	public function setSize($size)
@@ -61,8 +73,8 @@ class Board {
 
 			$this->_tiles[$row][$col] = $tile;
 
-			$i   += 2;
-			$col += 1;
+			$i   += 2; // Every tile = 2 characters
+			$col += 1; // For every tile we have a column
 
 			if($col >= $this->_size)
 			{
@@ -74,12 +86,15 @@ class Board {
 
 	private function _mapTile($tile)
 	{
-		if ($tile instanceof Hero)
-			$this->_tilesMapped['heroes'] = $tile;
-		else if ($tile instanceof GoldMine)
-			$this->_tilesMapped['goldmines'] = $tile;
-		else if ($tile instanceof Tavern)
-			$this->_tilesMapped['taverns'] = $tile;
+		$maps = array(
+			'AD9001\Game\Tiles\GoldMine' => 'goldmines',
+			'AD9001\Game\Tiles\Grass'    => 'grass',
+			'AD9001\Game\Tiles\Hero'     => 'heroes',
+			'AD9001\Game\Tiles\Tavern'   => 'taverns',
+			'AD9001\Game\Tiles\Wood'     => 'woods',
+		);
+
+		$this->_tilesMapped[$maps[get_class($tile)]][] = $tile;
 	}
 
 }

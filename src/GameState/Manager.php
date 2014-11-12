@@ -33,18 +33,29 @@ class Manager {
 		$content  = $response->getContent();
 
 		$this->_board = new Board($content->game->board);
+		$this->updateStats($content->game);
 
+		$heroes = $this->_board->getHeroes();
 	}
 
     public function updateStats($game)
     {
-
         $this->_id = $game->id;
         $this->_currentTurn = $game->turn;
         $this->_maxTurns = $game->maxTurns;
-        $this->_heroes = $game->heroes;
-        $this->_board = $game->board;
         $this->_gameHasFinished = $game->finished;
+
+		$this->_heroes = $this->_board->getHeroes();
+
+		foreach($this->_heroes as $hero)
+		{
+			foreach($game->heroes as $gameHero)
+				if($gameHero->id == $hero->id)
+					break;
+
+			foreach($gameHero as $key => $value)
+				$hero->$key = $value;
+		}
     }
 
     public function getBoard()
