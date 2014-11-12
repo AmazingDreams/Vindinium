@@ -44,12 +44,12 @@ class Manager {
         $this->_maxTurns = $game->maxTurns;
         $this->_heroes = $game->heroes;
         $this->_board = $game->board;
-        $this->_gameHasFinished = $game->finished; 
-
+        $this->_gameHasFinished = $game->finished;
     }
 
-    public function getStats()
+    public function getBoard()
     {
-
+        return $this->_board;
     }
+
 }
