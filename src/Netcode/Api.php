@@ -13,6 +13,7 @@ class Api {
 
     private $_baseUrl = "http:://vindinium.org/api/";
 
+
     private $_apiKey;
 
     public function __construct($apiKey)
@@ -23,19 +24,24 @@ class Api {
     public function start($mode, $turns = 300, $map = "")
     {
         $mode = strtolower($mode);
+
         if ( ! in_array($mode, array("arena", "training")))
             throw new \Exception("Invalid mod $mode");
         $request = Request::factory("POST", $this->_baseUrl.$mode);
+
+
         $request -> setData(array(
-            "key" => $this->_apiKey,
+            "key"   => $this->_apiKey,
             "turns" => $turns,
-            "map" => $map,
+            "map"   => $map,
         ));
+
         $response = $request->send();
+
         if ($response->getStatusCode() != 200)
-        {
             throw new \Exception("Got status code".$response->getStatusCode());
-        }
+
         return $response;
     }
-} 
+
+}
